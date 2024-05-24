@@ -30,13 +30,32 @@ const App = () => {
 
   const submitData = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/book",
-        formData
-      );
-      alert(response.data.message);
+      const response = await fetch("http://localhost:5000/api/book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log(result);
+      if (response.ok) {
+        alert(result.message);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          vehicleType: "",
+          vehicleName: "",
+          vehicleModel: "",
+          startDate: null,
+          endDate: null,
+        });
+        setStep(1);
+      } else {
+        alert(result.message);
+      }
     } catch (error) {
-      console.error(error.response.data.message);
+      alert(error.response.data.message);
     }
   };
   const fetchData = async () => {
@@ -64,20 +83,28 @@ const App = () => {
         <Step1 data={formData} setData={setFormData} nextStep={nextStep} />
       )}
       {step === 2 && (
-        <Step2
-          data={formData}
-          setData={setFormData}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          products={products}
-        />
+        <div className="flex flex-col h-full w-full m-[0 auto] items-center">
+          <Step2
+            data={formData}
+            setData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            products={products}
+          />
+          <div className="flex">
+            <Button onClick={prevStep}>Back</Button>
+            <Button onClick={nextStep}>Next</Button>
+          </div>
+        </div>
       )}
       {/* Other steps */}
       {step === 3 && (
-        <div>
+        <div className="flex flex-col h-full w-full m-[0 auto] items-center">
           <Step3 products={filter} data={formData} setData={setFormData} />
-          <Button onClick={prevStep}>Back</Button>
-          <Button onClick={submitData}>Submit</Button>
+          <div className="flex">
+            <Button onClick={prevStep}>Back</Button>
+            <Button onClick={submitData}>Submit</Button>
+          </div>
         </div>
       )}
     </div>

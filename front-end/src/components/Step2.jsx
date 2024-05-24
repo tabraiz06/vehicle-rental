@@ -6,25 +6,27 @@ const Step2 = ({ data, setData, nextStep }) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   return (
-    <div>
-      <h1>hell from step 2</h1>
-      <form action="">
+    <div className="flex flex-col  h-[500px] items-center justify-center ">
+      <form className="flex flex-col ">
         <h1>Select vehicleType</h1>
-        <label htmlFor="two wheelers">Two Wheelers</label>
-        <input
-          type="radio"
-          name="vehicleType"
-          onChange={handleChange}
-          value={"two wheelers"}
-        />
-        <label htmlFor="four wheeler">Four Wheelers</label>
-        <input
-          type="radio"
-          name="vehicleType"
-          onChange={handleChange}
-          value={"four wheelers"}
-        />
-        <Button onClick={nextStep}>Next</Button>
+        <div>
+          <label htmlFor="two wheelers">Two Wheelers</label>
+          <input
+            type="radio"
+            name="vehicleType"
+            onChange={handleChange}
+            value={"two wheelers"}
+          />
+        </div>
+        <div>
+          <label htmlFor="four wheeler">Four Wheelers</label>
+          <input
+            type="radio"
+            name="vehicleType"
+            onChange={handleChange}
+            value={"four wheelers"}
+          />
+        </div>
       </form>
     </div>
   );
