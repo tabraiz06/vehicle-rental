@@ -5,37 +5,35 @@ router.post("/book", async (req, res) => {
   const {
     firstName,
     lastName,
-    wheels,
-    model,
-    vehicle,
+    vehicleName,
+    vehicleModel,
+    vehicleType,
     startDate,
     endDate,
     quantity,
   } = req.body;
 
   // Check for overlapping bookings
-  const overlappingStartDate = await Booking.findOne({
-    startDate,
+  const overlappingBooking = await Booking.findOne({
+    vehicleName,
   });
-  const overlappingEndDate = await Booking.findOne({
-    endDate,
-  });
-
-  if (overlappingStartDate) {
-    res
-      .status(400)
-      .json({ message: "Vehicle is already booked for the selected dates" });
-  } else if (overlappingEndDate) {
-    res.status(400).json({
-      message: "Vehicle is already booked for the selected end dates",
-    });
+  if (overlappingBooking) {
+    if (overlappingBooking.startDate === startDate) {
+      res
+        .status(400)
+        .json({ message: "Vehicle is already booked for the selected dates" });
+    } else if (overlappingBooking.endDate === endDate) {
+      res.status(400).json({
+        message: "Vehicle is already booked for the selected end dates",
+      });
+    }
   } else {
     const booking = new Booking({
       firstName,
       lastName,
-      wheels,
-      model,
-      vehicle,
+      vehicleName,
+      vehicleModel,
+      vehicleType,
       startDate,
       endDate,
       quantity,
