@@ -9,7 +9,7 @@ const Step2 = ({ data, setData, nextStep }) => {
     <div className="flex flex-col  h-[500px] items-center justify-center ">
       <form className="flex flex-col ">
         <h1>Select vehicleType</h1>
-        <div>
+        <div className="flex gap-[1.5rem]">
           <label htmlFor="two wheelers">Two Wheelers</label>
           <input
             type="radio"
@@ -18,7 +18,7 @@ const Step2 = ({ data, setData, nextStep }) => {
             value={"two wheelers"}
           />
         </div>
-        <div>
+        <div className="flex gap-[1.5rem]">
           <label htmlFor="four wheeler">Four Wheelers</label>
           <input
             type="radio"

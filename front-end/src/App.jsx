@@ -5,7 +5,8 @@ import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 
 import Step3 from "./components/Step3";
-import { Button } from "@mui/material";
+// import { button } from "@mui/material";
+import Step4 from "./components/Step4";
 
 // ... other steps
 
@@ -23,7 +24,6 @@ const App = () => {
     startDate: null,
     endDate: null,
   });
-  console.log(formData.vehicleType);
 
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
@@ -38,7 +38,7 @@ const App = () => {
         body: JSON.stringify(formData),
       });
       const result = await response.json();
-      console.log(result);
+
       if (response.ok) {
         alert(result.message);
         setFormData({
@@ -61,13 +61,13 @@ const App = () => {
   const fetchData = async () => {
     const response = await fetch("http://localhost:5000/api/vehicle-types");
     const result = await response.json();
-    console.log(result);
+
     setProducts(result);
   };
   useEffect(() => {
     fetchData();
   }, [formData.vehicleName]);
-  // console.log(filterItems);
+
   let filter = [];
   if (formData.vehicleType !== "") {
     products.filter((ele) => {
@@ -76,7 +76,7 @@ const App = () => {
       }
     });
   }
-  console.log(filter);
+
   return (
     <div className="App">
       {step === 1 && (
@@ -92,8 +92,8 @@ const App = () => {
             products={products}
           />
           <div className="flex">
-            <Button onClick={prevStep}>Back</Button>
-            <Button onClick={nextStep}>Next</Button>
+            <button onClick={prevStep}>Back</button>
+            <button onClick={nextStep}>Next</button>
           </div>
         </div>
       )}
@@ -102,8 +102,17 @@ const App = () => {
         <div className="flex flex-col h-full w-full m-[0 auto] items-center">
           <Step3 products={filter} data={formData} setData={setFormData} />
           <div className="flex">
-            <Button onClick={prevStep}>Back</Button>
-            <Button onClick={submitData}>Submit</Button>
+            <button onClick={prevStep}>Back</button>
+            <button onClick={nextStep}>Next</button>
+          </div>
+        </div>
+      )}
+      {step === 4 && (
+        <div className="flex flex-col h-full w-full m-[0 auto] items-center">
+          <Step4 data={formData} setData={setFormData} />
+          <div className="flex">
+            <button onClick={prevStep}>Back</button>
+            <button onClick={submitData}>Submit</button>
           </div>
         </div>
       )}

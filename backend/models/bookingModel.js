@@ -8,5 +8,9 @@ const bookingSchema = mongoose.Schema({
   quantiy: Number,
   startDate: String,
   endDate: String,
+  status: {
+    type: String,
+    default: "pending",
+  },
 });
 module.exports = mongoose.model("booking", bookingSchema);

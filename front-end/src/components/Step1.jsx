@@ -1,6 +1,6 @@
 // src/components/Step1.js
 import React from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const Step1 = ({ data, setData, nextStep }) => {
   const handleChange = (e) => {
@@ -26,7 +26,7 @@ const Step1 = ({ data, setData, nextStep }) => {
           onChange={handleChange}
           aria-required
         />
-        <Button onClick={nextStep}>Next</Button>
+        <button onClick={nextStep}>Next</button>
       </div>
     </div>
   );

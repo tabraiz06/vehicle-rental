@@ -35,9 +35,18 @@ router.post("/book", async (req, res) => {
         message: "Vehicle is already booked for the selected end dates",
       });
     } else {
-      res.status(400).json({
-        message: "Vehicle is already booked ",
+      const booking = await Booking.create({
+        firstName,
+        lastName,
+        vehicleName,
+        vehicleModel,
+        vehicleType,
+        startDate,
+        endDate,
+        quantity,
       });
+
+      res.status(201).json({ message: "Booking successful" });
     }
   } else {
     const booking = await Booking.create({
