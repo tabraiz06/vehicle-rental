@@ -10,6 +10,7 @@ const Step1 = ({ data, setData, nextStep }) => {
   return (
     <div className="flex w-full h-screen items-center justify-center">
       <div className="flex flex-col w-[40%] h-[500px] items-center justify-center">
+        <h1>What's Your Name</h1>
         <TextField
           className="w-full"
           label="First Name"

@@ -29,6 +29,17 @@ const App = () => {
   const prevStep = () => setStep(step - 1);
 
   const submitData = async () => {
+    if (
+      formData.firstName === "" ||
+      formData.lastName === "" ||
+      formData.vehicleModel === "" ||
+      formData.vehicleName === "" ||
+      formData.vehicleType === "" ||
+      formData.startDate === "" ||
+      formData.endDate === ""
+    ) {
+      return alert("please fill all the details correctly");
+    }
     try {
       const response = await fetch("http://localhost:5000/api/book", {
         method: "POST",
