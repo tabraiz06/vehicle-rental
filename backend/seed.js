@@ -1,4 +1,3 @@
-// backend/seed.js
 const mongoose = require("mongoose");
 const vehicleType = require("./models/vehicleType");
 

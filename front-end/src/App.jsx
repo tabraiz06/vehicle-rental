@@ -1,14 +1,11 @@
-// src/App.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 
 import Step3 from "./components/Step3";
-// import { button } from "@mui/material";
-import Step4 from "./components/Step4";
 
-// ... other steps
+import Step4 from "./components/Step4";
 
 const App = () => {
   const [step, setStep] = useState(1);

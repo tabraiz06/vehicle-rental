@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import React from "react";
 
 const Step2 = ({ data, setData, nextStep }) => {
