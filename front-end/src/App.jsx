@@ -10,7 +10,6 @@ import Step4 from "./components/Step4";
 const App = () => {
   const [step, setStep] = useState(1);
   const [products, setProducts] = useState([]);
-  const [filterItems, setFilterItems] = useState([]);
 
   const [formData, setFormData] = useState({
     firstName: "",
