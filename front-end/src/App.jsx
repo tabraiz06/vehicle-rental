@@ -37,7 +37,7 @@ const App = () => {
       return alert("please fill all the details correctly");
     }
     try {
-      const response = await fetch("http://localhost:5000/api/book", {
+      const response = await fetch("http://localhost:8080/api/book", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,11 +65,16 @@ const App = () => {
       alert(error.response.data.message);
     }
   };
-  const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/api/vehicle-types");
-    const result = await response.json();
 
-    setProducts(result);
+  const fetchData = async () => {
+    const res = await fetch("http://localhost:8080/api/vehicle-types", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await res.json();
+    console.log(result);
   };
   useEffect(() => {
     fetchData();
