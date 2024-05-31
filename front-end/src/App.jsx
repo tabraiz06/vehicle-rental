@@ -75,6 +75,7 @@ const App = () => {
     });
     const result = await res.json();
     console.log(result);
+    setProducts(result.types);
   };
   useEffect(() => {
     fetchData();

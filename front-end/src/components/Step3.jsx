@@ -22,9 +22,11 @@ const Step3 = ({ products, data, setData }) => {
           <option value="select">Selcet Brand</option>
           {products.map((ele) => {
             return (
-              <option value={ele.vehicleName} key={ele.id}>
-                {ele.vehicleName}
-              </option>
+              <>
+                <option value={ele.vehicleName} key={ele.id}>
+                  {ele.vehicleName}
+                </option>
+              </>
             );
           })}
         </select>
